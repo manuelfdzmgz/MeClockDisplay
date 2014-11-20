@@ -1,57 +1,69 @@
 
-/**
- * Write a description of class NumberDisplay here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class NumberDisplay
-{
-    // instance variables - replace the example below with your own
-    private int display;
-    private int maxDisplay;
+public class NumberDisplay{
+    //el valor almacenado
+    private int value;
+    //el limite al que puede llegar el valor
+    private int limit;
 
     /**
-     * Constructor for objects of class NumberDisplay
+     * Constructor for objects of class numberDisplay
      */
-    public NumberDisplay(int displayValue)
+    public NumberDisplay(int newLimit)
     {
-        // initialise instance variables
-        maxDisplay = displayValue;
-        display = 0;
+        value = 0;
+        limit=newLimit;
     }
-    public void setValue(int value)
+
+    /**
+     * Fija el valor del atributo valor a uno dado
+     */
+    public void setValue(int newValue)
     {
-        display =  value;
+        if( (newValue < limit ) && (newValue>=0))
+        {
+            value = newValue;
+        }
     }
-    public  int getValue()
-    {   
-        return display;
+
+    /**
+     * Devuelve una cadena de dos caracteres con el valor del atributo value
+     */
+    public String getDisplayValue()
+    {
+        String returnedValue = "";
+        if (value<10)
+        {
+            returnedValue ="0" +value;
+        }
+        else
+        {
+            returnedValue =""+value;
+        }
+        return returnedValue;
     }
+
+    /**
+     * Devuelve el valor actual del atributo value
+     */
+    public int getValue()
+    {
+        return value;
+    }
+
+    /**
+     * Incrementa en 1 el valor de value y lo hace volver a 0 si alcanza el limite
+     */
     public void increment()
     {
-        if (display<=maxDisplay)
+        if (value<limit)
         {
-            display++;
+            value++;
         }
         else
         {
-            display = 0;
+            value = 0;
         }
+
     }
-    public String getDisplay()
-    {
-        if(display<10)
-        {   
-            String completDisplay = "0" + display;
-            return completDisplay;
-        }
-        else
-        {
-            String completDisplay = "" + display ;
-            return completDisplay;
-        }
-    }
+
 }
-
-
