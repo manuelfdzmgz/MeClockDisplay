@@ -37,6 +37,7 @@ public class ClockDisplay
     {
         hours.setValue(actualHour);
         minutes.setValue(actualMinute);
+        updateDisplay();
     }
 
     /**
@@ -65,15 +66,17 @@ public class ClockDisplay
      * Actualiza el atributo displayString
      */
     private void updateDisplay()
-    {   
-        if (hours.getValue() <12)
-        {   
-            displayString = hours.getDisplayValue() + ":" + minutes.getDisplayValue() +"am";
-        }
-        else
-        {
-            displayString = hours.getDisplaygetValue()+ ":" + minutes.getDisplayValue() + "pm";
-        }
+    {
+       
+     if (hours.getValue()> 11)
+     {   
+           int setHour = hours.getValue() - 12;
+           displayString= setHour+ ":" + minutes.getDisplayValue() + "pm";
+     }
+     else
+     {
+           displayString= hours.getDisplayValue()+ ":" + minutes.getDisplayValue() + "am";
+     }
 
     }
 }
